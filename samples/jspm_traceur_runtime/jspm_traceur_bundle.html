@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ES6 con Traceur Bundle</title>
+<!--[if lt IE 9]>
+<script src="../html5shiv.js"></script>
+<script src="../consoleIE.js"></script>
+<![endif]-->
+</head>
+<body>
+<ul>
+<p>Per semplificare la configurazione del progetto usiamo <a href="http://jspm.io/"><b>jspm.io</b></a>:</p>
+<pre>
+npm install jspm -g
+jspm init -y
+</pre>
+<li>Questo ci permette di scaricate tutte le dipendenze (SystemJS + Traceur Runtime) e viene creato in automatico il file <b>config.js</b>!</li>
+<li>Bisogna poi creare il file di <b>my_startup.js</b> che contiene i vari <b>import</b>:
+<pre>
+import {greet} from './greet';
+import Greeter from './Greeter';
+
+//esempi di utilizzo della funzione greet e della classe Greeter
+greet(2000,"Pippo");
+...
+var zio = new Greeter("Paperino");
+zio.greetAfter({nsec: 3, title: "Zio"});
+</pre>
+</li>
+<li>Il file <b>greet.js</b> espone il codice ES6 tramite <b>export function</b>: 
+<pre>export function greet(..){...}</pre>
+</li>
+<li>Il file <b>Greater.js</b> espone una classe ES6 che fa uso sempre della stessa funzione _greet: 
+<pre>export default class Greeter { ... }</pre>
+</li>
+<li>In fine per evitare il costo di download e compilazione a runtime del codice ES6 viene creato un <b>bundle</b> grazie al comando:
+<pre>
+jspm bundle-sfx my_startup build.js
+</pre>
+</li>
+<li> Nella pagina HTML basta referenziare solamente il file <b>build.js</b> che contiene tutto!</li>
+</ul>
+
+<!-- script necessari per il runtime-compilation a partire da entrypoint my_startup.js 
+<script src="jspm_packages/system.js"></script>
+<script src="config.js"></script>
+<script>System.import("my_startup");</script>
+-->
+
+<!-- in produzione si usa BUNDLE, ricordarsi di deccomentare codice che usa class Greeter in my_startup 
+prima di compilare con il comando: jspm bundle-sfx my_startup build.js -->
+<script type="text/javascript" src="build.js"></script>
+
+
+</body>
+</html>

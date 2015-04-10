@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ES6 con Traceur-Runtime</title>
+<!--[if lt IE 9]>
+<script src="../html5shiv.js"></script>
+<script src="../consoleIE.js"></script>
+<![endif]-->
+</head>
+<body>
+<ul>
+<p>Per semplificare la configurazione del progetto usiamo <a href="http://jspm.io/"><b>jspm.io</b></a>:<pre>npm install jspm -g</pre></p>
+<li>Però specificando la configurazione a mano indicando Babel come transpiler
+<pre>
+jspm init
+Package.json file does not exist, create it? [yes]: <i>yes</i>
+Would you like jspm to prefix the jspm package.json properties under jspm? [yes]: <i>yes</i>
+Enter server baseURL (public folder path) [./]: <i>./</i>
+Enter jspm packages folder [.\jspm_packages]: <i>.\jspm_packages</i>
+Enter config file path [.\config.js]: <i>.\config.js</i>
+Configuration file config.js doesn't exist, create it? [yes]: <i>yes</i>
+Enter client baseURL (public folder URL) [/]: <u><b>./</b></u>
+Which ES6 transpiler would you like to use, Traceur or Babel? [traceur]: <u><b>Babel</b></u>
+</pre>
+<li>Questo ci permette di scaricate tutte le dipendenze e viene creato in automatico il file <b>config.js</b>!</li>
+<li>Bisogna poi creare il file <b>entry.js</b> che contiene gli <b>import</b>:
+<pre>
+import greet from './greet';
+import {gen as Ciao} from './gen';
+</pre>
+</li>
+<li>Il file <b>greet.js</b> espone la funzione <i>greet()</i> ES6 tramite <b>export function</b>: 
+<pre>export function greet(..){...}</pre>
+</li>
+<li>Il file <b>gen.js</b> dimostra come usare i <b>generetors</b>: 
+<pre>
+export function* gen(n) {
+	for(let i=0;i&lt;n;i++) yield `ciao ${i}`;
+}
+</pre>
+</li>
+<h2>ATTENZIONE: PER IL SUPPORTO AI GENERETORS</h2>
+<li>Per poter funzionare bisogna includere nella pagina HTML anche lo script <b>browser-polyfill.js</b> presente nella cartella <pre>.\jspm_packages\npm\babel@4.7.16\browser-polyfill.js</pre></li>
+<li>Ed inoltre modificare il file <b>config.js</b> disabilitando/commentando la parte relativa alle <i>babelOptions runtime</i>:
+<pre>
+/*"babelOptions": {
+    "optional": [
+      "runtime"
+    ]
+  },*/
+</pre>
+<li>Ed infine copiare il file <b>external-helpers.js</b> dalla cartella:
+<pre>jspm_packages\npm\babel@4.7.16   -->   jspm_packages\npm</pre>
+</li>
+<li>A questo punto e' possibile compilare il <b>bundle</b> con Babel utiliziamo il comando:
+<pre>jspm bundle-sfx entry bundle.js</pre>
+</li>
+<li>E referenziare nella pagina HTML il file <b>bundle.js</b> insieme al <b>browser-polyfill.js</b>!</li>
+</ul>
+
+<!-- IMPORTANTE INCLUDERE QUESTO FILE ALTRIMENTI NON FUNZIONANON generators !!! -->
+<script type="text/javascript" src="browser-polyfill.js"></script>
+
+<!-- codice per avere runtime compilation
+<script src="jspm_packages/system.js"></script>
+<script src="config.js"></script>
+<script>System.import("entry");</script>
+-->
+
+<!-- in produzione si usa bundle, creato con jspm bundle-sfx entry bundle.js -->
+<script type="text/javascript" src="bundle.js"></script>
+
+</body>
+</html>

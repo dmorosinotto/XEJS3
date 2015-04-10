@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "amd",        
+        "sourceMap": true
+	},
+    "files": [
+        "lib/math.ts",
+        "lib/mathplus.ts",
+        "lib/mathplusplus.ts",
+		"app1.ts",
+		"app2.ts",
+		"app3.ts"
+    ]
+}

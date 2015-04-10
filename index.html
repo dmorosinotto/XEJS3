@@ -1,0 +1,629 @@
+﻿<!doctype html>
+<html lang="it">
+<head>
+	<meta charset="utf-8">
+
+	<title>Javascript Take3 - Novit&agrave; di ES6 / ECMAScript 2015</title>
+
+	<meta name="description" content="Corso sulla prossima versione di Javascript: ES 6 / ECMAScript 2015">
+	<meta name="author" content="Daniele Morosinotto">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<link rel="stylesheet" href="css/reveal.min.css">	
+	<link rel="stylesheet" href="css/theme/xe.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/eclipse.css">
+
+	<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+	<script>
+		if( window.location.search.match( /print-pdf/gi ) ) {
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = 'css/print/pdf.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		}
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/polyfill/html5shiv.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+<div class="reveal">
+	<!-- Any section element inside of this container is displayed as a slide -->
+	<div class="slides">
+	<section>
+		<section data-state="intro">
+			<br/><br/>
+			<h2>Javascript Take3</h2>
+			<h3>Le novit&agrave; di ES6 / <a href="http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts">ECMAScript 2015</a> </h3>
+			<p>by Daniele Morosinotto</p>			
+		</section>
+		<section>
+			<h3>Whois (#devlife):</h3>
+			<img src="images/Who.gif" alt="@dmorosinotto"/>			
+		</section>
+		<section>
+			<h2>Why JS?</h2>
+			<iframe class="fragment" data-autoplay width="853" height="480" src="https://www.youtube-nocookie.com/embed/KoBSGpm16wo?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+			<h3 class="fragment"><a href="https://medium.com/@slsoftworks/javascript-world-domination-af9ca2ee5070">&nbsp;The Javascript World Domination&nbsp;</a></h3>
+		</section>		
+	</section>
+	
+<section data-markdown data-separator="^\n===\n$" data-vertical="^\n---\n">
+<script type="text/template">
+##ECMAScript 2015
+a.k.a.
+#ES6
+a.k.a.
+##Javascript Harmony (ES6/7)
+
+---
+
+##Javascript History
+- Creato da [Brendan Hich](https://twitter.com/BrendanEich) (*Netscape*) in **10 giorni** nel 1996
+- Inizialmente fu battezzato come Livescript, poi Netscape ottenne i diritti esclusivi da Sun per chiamarlo **Javascript**
+- Introdotto (*"copiato"*) da Microsoft in IE 3.0 con il nome di **JScript**
+- Standardizzato sotto il nome di **ECMAScript** nel 1997
+- European Computer Manufactorers Association - by **TC39**
+	- 1999 **ES3** Standardizzazione base di Javascript
+	- 2009 **ES5** Intoduzione Strict Mode
+	- 2011 **ES5.1** Piccole aggiunte al linguaggio
+	- **2015 mid? ES6** = **[ECMA Script 2015 draft](http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts)**
+	- da qui in avanti *"dovrebbe"* seguire dei rilasci annuali ES2016... (ES7 Harmony)
+
+---
+
+##Current Support (Ops...)
+[![Current Support (ops...)](images/Current_Support.png)](https://kangax.github.io/compat-table/es6/)
+
+---
+
+##Q: CAN BE USED TODAY?
+
+- **NATIVE** solo "qualcosa" in:
+	- IE Spartan, oppure Firefox 34+ *(no Class)*
+
+- **RUNTIME** solo per fase sviluppo/test:
+	- [SystemJS + Runtime Traceur/Babel](https://github.com/systemjs/systemjs#getting-started)
+	- REPL: [**ES6fiddle.net**](http://www.es6fiddle.net/) | [Babel.io](https://babeljs.io/repl/#?code=) | [ScratchJS](https://chrome.google.com/webstore/detail/scratch-js/alploljligeomonipppgaahpkenfnfkn)
+
+- **TRANSPILER** verso ES5 per usarlo su tutti i Browser:
+	- [**TypeScript**](http://www.typescriptlang.org/Playground)  |  [Traceur](https://github.com/google/traceur-compiler/wiki/Getting-Started)  |  [Babeljs](https://babeljs.io/docs/using-babel/) 	
+
+- **PACKAGE MANAGER** per creare **bundle** in produzione:	
+	- [**jspm**](https://github.com/jspm/jspm-cli/wiki/Getting-Started)	 |  [webpack](http://webpack.github.io/docs/tutorials/getting-started/#setup-compilation)  |  [browserify](https://github.com/substack/node-browserify#usage) + [babelify](https://github.com/babel/babelify)/[es6ify](https://github.com/thlorenz/es6ify)
+
+&nbsp;
+
+TL;DR
+
+>  #Re: YES!
+
+---
+
+## Who is using ES6 TODAY!
+
+> TUTTI i maggiori **player** e **Framework** Javascript stanno addottando la sintassi e le funzionalità di ES6!
+
+- Microsoft in [**TypeScript**](http://www.typescriptlang.org/) [*(1.5 alpha == ES6)*](https://github.com/Microsoft/TypeScript/wiki/Roadmap#15)
+- Google in [**Angular2**](https://angular.io/docs/js/latest/quickstart.html) [*(AtScript === Typescript)*](https://docs.google.com/document/d/11YUzC-1d0V1-Q3V0fQ7KSit97HnZoKVygDxpWzEYW0U/edit?pli=1#heading=h.9kzwyri4iqho)
+- [**Aurelia**](http://aurelia.io/get-started.html) (ex Durandal)
+- Facebook in [**React**](https://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html) (in parte)
+- VanillaJS :-)
+
+---
+
+##ES6 "native" sample in [FF](samples/native_in_firefox/native_in_firefox.html)
+
+```html
+<body>
+Supporto nativo per alcune funzioni di ES6 in Firefex, ma MANCANO LE <i>Class</i>!
+<p>In Chrome non funziona perche NON SUPPORTA LE => <i>(Arrow function)</i>!</p>
+
+<!--uso questo mimetype per problemi con il let -->
+<script type="application/javascript;version=1.7">
+```
+
+<iframe width="90%" height="600" frameborder="0" allowfullscreen src="http://www.es6fiddle.net/embed/i89dp6c7/"></iframe>
+
+---
+
+##[TypeScript](samples/typescript_is_es6/typescript_is_es6.html) (1.5+) is ES6
+
+```typescript
+//greet.ts è esattamente il codice ES6 + type annotation (che sono opzionali)
+function greet(first: number|string = 1000, ...who: string[]) {
+    let after: number;     	
+    if (typeof first !== "number") {        
+		[after, who] = [5000, [first, ...who]];	
+    } else {
+        after = first;
+    }    
+	let names = who.join(' ');
+	const printH1 = () => document.body.innerHTML+=`<h1>Hello ${names}</h1>`;
+	setTimeout(printH1, after);	
+	console.log(`Will greet #${who.length} in ${after/1000} sec`);
+}
+```
+
+Per compilare il codice [TypeScript](http://www.typescriptlang.org/) in JS è necessario:
+
+```console
+npm  install  typescript -g
+tsc  greet.ts  --out greet.js  --target ES5
+```
+
+Nel file HTML si incluse semplicemente il file Javascript:
+
+```html
+<script type="text/javascript" src="greet.js" />
+```
+
+---
+
+##SystemJS + [Traceur runtime](samples/jspm_traceur_runtime/jspm_traceur_runtime.html)
+
+Per inizializzare in modo semplice l'ambiente usiamo [**jspm**](http://jspm.io/)
+
+```console
+npm  install  jspm  -g
+cd  my_project_dir
+jspm  init  -y
+```
+
+- Vengono scaricate tutte le dipendenze in **jspm_packages** ed inoltre viene creato in automatico il file **config.js**.
+- Bisogna creare un file **my_startup.js** per caricare e lanciare il codice ES6 esposto tramite **export function** *greet(..){...}*
+
+```javascript
+//contenuto del file my_startup.js 
+import {greet} from './greet';	//greet.js espone export function greet(..){...}
+greet(2000,"Pippo");            //Hello Pippo         - Will greet #1 in 2 sec
+greet("XE", "ES6", "rocks!");   //Hello XE ES6 rocks! - Will greet #3 in 5 sec
+greet();                        //Hello               - Will greet #0 in 1 sec
+```
+
+Ed in fine nel file HTML bisogna includere gli script di *startup*:
+
+```html
+<script src="jspm_packages/system.js" />
+<script src="config.js" />
+<script>
+	System.import('my_startup'); //startup del nostro codice ES6
+<script/>
+```
+
+---
+
+##SystemJS + [Traceur Bundle](samples/jspm_traceur_runtime/jspm_traceur_bundle.html)
+
+Per evitare di avere la compilazione a runtime di ES6 e rimuovere tutte le dipendenze da *SystemJS* e *Traceur* e' possibile creare un **bundle** con [**jspm**](http://jspm.io/) ed ottenere il file **build.js** da usare nell'HTML
+
+```console
+npm  bundle-sfx  my_startup  build.js
+```
+
+Con ES6 volendo possiamo anche creare delle **Class** che riutilizzano e incapsulano meglio la nostra *function greet()*
+
+<iframe width="90%" height="600" frameborder="0" allowfullscreen src="http://www.es6fiddle.net/embed/i8aeui5m/"></iframe>
+
+---
+
+##Bundle with [Babel js](samples/bundle_with_babel/bundle_with_babel.html)
+
+Per semplificare la configurazione del progetto usiamo [**jspm**](http://jspm.io/) con questa specifica configurazione:
+
+```console
+jspm  init
+Package.json file does not exist, create it? [yes]:
+Would you like jspm to prefix the jspm package.json properties under jspm? [yes]:
+Enter server baseURL (public folder path) [./]:
+Enter jspm packages folder [.\jspm_packages]:
+Enter config file path [.\config.js]:
+Configuration file config.js doesn't exist, create it? [yes]:
+Enter client baseURL (public folder URL) [/]: ./
+Which ES6 transpiler would you like to use, Traceur or Babel? [traceur]: Babel
+```
+
+- Vengono scaricate tutte le dipendenze in **jspm_packages** ed inoltre viene creato in automatico il file **config.js**.
+- Bisogna creare il file **entry.js** che contiene l'**import** del file **great.js** che espone la  funzione *greet(..){...}*
+- Ed inifine per compilare con Babel, il file **bundle.js** da includere nella pagina HTML, si usa il comando:
+
+
+```console
+jspm  bundle-sfx  entry  bundle.js
+```
+
+---
+
+##HowTo Generators in Babel
+
+**ATTENZIONE:** Per poter usare [Generators](http://www.es6fiddle.net/i8aikn2u/) con Babel bisogna: 
+
+- Includere nella pagina HTML lo script **browser-polyfill.js** da:
+```console
+.\jspm_packages\npm\babel@4.7.16\browser-polyfill.js
+```
+- Modificare il **config.js** per disabilitare/commentare le *babelOption runtime*:
+```javascript
+/*"babelOptions": {
+    "optional": [
+      "runtime"
+    ]
+  },*/
+```
+- Ed infine copiare il file **external-helpers.js** dalla cartella:
+```console
+jspm_packages\npm\babel@4.7.16   -->   jspm_packages\npm
+```
+Altrimenti la compilazione del **bundle.js** non funziona!
+
+===
+
+#NEW SYNTAX
+
+---
+
+##Shorthand object initializer
+
+<iframe width="100%" height="600" frameborder="0" allowfullscreen src="http://www.es6fiddle.net/embed/i8asfr6d/"></iframe>
+
+---
+
+##Block Scope: let const
+
+<iframe width="100%" height="600" frameborder="0" allowfullscreen src="http://www.es6fiddle.net/embed/i8atv4cr/"></iframe>
+
+---
+
+##String Template ` = ALT+96
+
+<iframe width="100%" height="600" frameborder="0" allowfullscreen src="http://www.es6fiddle.net/embed/i8avsst9/"></iframe>
+
+---
+
+##Destructuring assignment
+
+<iframe width="100%" height="600" frameborder="0" allowfullscreen src="http://www.es6fiddle.net/embed/i8ay0eu0/"></iframe>
+
+---
+
+##Default parameter
+
+<iframe width="100%" height="600" frameborder="0" allowfullscreen src="http://www.es6fiddle.net/embed/i8azjnef/"></iframe>
+
+---
+
+##Rest parameter + ...Spread
+
+<iframe width="100%" height="600" frameborder="0" allowfullscreen src="http://www.es6fiddle.net/embed/i8b18l1y/"></iframe>
+
+===
+
+#CODE PATTERN
+
+---
+
+##Arrow function =>
+
+<iframe width="100%" height="600" frameborder="0" allowfullscreen src="http://www.es6fiddle.net/embed/i8ba60bi/"></iframe>
+
+---
+
+##Class
+
+<iframe width="100%" height="600" frameborder="0" allowfullscreen src="http://www.es6fiddle.net/embed/i8baz1wx/"></iframe>
+
+---
+
+###Class is only [Syntactic Sugar](http://dmorosinotto.github.io/XEJS/#/6)
+
+![Recap](images/ES6_vs_Classicall.gif)
+
+---
+
+##Module System
+
+- Standardizzazione della sintassi per gestire il codice JS in più file - ndr: **moduli** e le relative dipendenze (import, export).
+- Permette di uniformare i pattern attualmente in uso (AMD, CommonJS) tramite implementazioni del Loader - ndr: **System** che ha comportamento di default: caricamento **asincrono**!
+
+---
+
+###export
+```javascript
+// lib/math.js
+export function sum(x, y) {
+  return x + y;
+}
+export const pi = 3.141593;
+export var sqrt = Math.sqrt;
+```
+
+###import * <small>[RUN](samples/code_pattern/module_system_app1.html)</small>
+```javascript
+// app1.js
+import * as math from "lib/math";
+alert("2π = " + math.sum(math.pi, math.pi));	//6.283186
+```
+
+###import explicit + rename <small>[RUN](samples/code_pattern/module_system_app2.html)</small>
+```javascript
+// app2.js
+import { pi, sqrt as radice } from "lib/math";
+alert("V²π = " + radice(pi));					//1.7724539
+```
+
+---
+
+###export default</small>
+```javascript
+// lib/mathplus.js
+export default function(x) {
+    return Math.exp(x);
+}
+```
+
+###export * + import default</small>
+```javascript
+// lib/mathplusplus.js
+export * from "lib/math";
+import _exp from "lib/mathplus";
+export const e = _exp(1);
+export var exp = _exp;
+```
+
+###import dependency tree <small>[RUN](samples/code_pattern/module_system_app3.html)</small>
+```javascript
+// app3.js
+import {exp, pi} from "lib/mathplusplus";
+alert("e^π = " + exp(pi)); 					//23.1407006
+```
+
+===
+
+#ITERATORS & &nbsp; GENERATORS
+
+---
+
+##Symbol
+
+- Sono una nuova primitiva di Javascript che permette di avere un valore univoco!
+```javascript
+var _secretKey = new Symbol("secret"); 	//name is optional
+```	
+- Può essere usata in qualsiasi oggetto come "key" (nome di una proprietà) al posto delle stringhe
+- Ci sono alcune costanti usate internamente da JS: **Symbol.iterator**
+- Utile ad esempio per simulare private
+<iframe width="100%" height="300" frameborder="0" allowfullscreen src="http://www.es6fiddle.net/embed/i8bg6kaq/"></iframe>
+
+
+---
+
+##Iterables
+
+- Sono oggetti che espongono un metodo di nome **Symbol.iterator** e che ritorna un oggetto Iterator
+```typescript
+interface Iterable {
+	[Symbol.iterator](): Iterator
+}
+```
+
+#### Iterator objects
+- E' un oggetto che espone un singolo metodo **next()** che ogni volta che viene chiamata ritorna oggetti con due proprietà:
+	- **value**: che rappresenta il valore corrente di qualsiasi tipo
+	- **done**: di tipo booleano per indicare con true quando sono stati esauiriti tutti i valori
+
+```typescript
+interface Iterator {
+  next(): IteratorResult;
+}
+
+interface IteratorResult {
+  done: boolean;
+  value: any;
+}
+```
+
+---
+
+##for of
+
+[ESEMPI](http://www.es6fiddle.net/i8bmieon/) di implementazione di Iterable: Range() e fibonacci
+
+Gli Iterator possono essere usati direttamente, ma nella maggior parte dei casi l'interfaccia viene consumata usando il nuovo ciclo **for** *(let item* **of** *Iterable) {...}*  
+
+<iframe width="100%" height="300" frameborder="0" allowfullscreen src="http://www.es6fiddle.net/embed/i8bhu83f/"></iframe>
+
+---
+
+##Generators
+
+- Sono *"pausable function"* che utilizzano **yield** per semplificare l'implementazione di Iterators e molto altro... (ndr: observable & co-routine) 
+
+- Implementano questa interfaccia:
+
+```typescript
+interface Generator extends Iterator {
+    next(value?: any): IteratorResult;
+    throw(exception: any);
+}
+```
+
+<iframe width="100%" height="300" frameborder="0" allowfullscreen src="http://www.es6fiddle.net/embed/i8bnnn0p/"></iframe>
+
+---
+
+## yield REAL POWER!
+
+La dualità dei Generator = Iterable + Observable
+e mettendo insieme yield + Promise = Async/Await
+
+<iframe width="853" height="480" src="https://www.youtube-nocookie.com/embed/DqMFX91ToLw?t=23m49s&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+===
+
+#OTHER THINGS
+
+---
+
+##Promise
+
+- Implementazione starndard delle **Promise** (nrd: "thenable") per gestire meglio esecuzione asincrona evitando *"callback hell"* grazie al *"chaining"*!
+- Rappresenta il "possibile valore futuro" di un'esecuzione asincrona (*resolve*), o l'eventuale errore (*reject*)
+
+- Metodi principali: 
+	- Promise.**new** (executor: *(resolve, reject) => void*) : *Promise*	
+	- **.then** ( *oufullfilled, onrejected**?** * ) : *Promise*
+	- **.catch** ( *onrejected* ) : *Promise*
+
+- Altri metodi: 
+	- per risolvere immediatamente: **Promise.resolve**(*val*), **Promise.reject**(*reason*)
+	- per gestire parallelismo: **.all**( *[...promArr]* ), **.race**( *[...promArr]* ),  etc...
+- ESEMPI: [delay](http://www.es6fiddle.net/i8bqrvas/), [httpGET](http://www.es6fiddle.net/i8bqnnpg/), [timeout](http://www.es6fiddle.net/i8bqx08m/)
+
+---
+
+##Other Objects
+
+- **Map** : Sono dei veri **dictionary** che gestiscono chiavi "key" di qualunque tipo primitivo, oggetti o funzioni (*reference*)
+- **Set** : E' una **collezione** di elementi **univoci** (controllo esistenza con === uguaglianza per *reference*)
+- **WeakMap + WeakSet** : Sono come Map e Set solo che hanno la proprietà di **NON mantenere un riferimento** vivo all'oggetto usato come chiave, e quindi NON ci sono problemi di Garbage collection/Memory leak
+
+```javascript
+let obj = {};
+let dict = new Map();
+    
+dict.set(obj, 123);
+dict.get(obj)		//123
+dict.has(obj)		//true
+dict.delete(obj);	//true
+dict.has(obj);		//false
+
+let arr = [5, 1, 5, 7, 7, 5];
+let unique = [...new Set(arr)]; // [ 5, 1, 7 ]
+```
+
+---
+
+##New functions
+
+- **Object.assign**(...objs)	utilissimo per fare MIXIN
+- **Number.isNaN**( n ) 		finalmente un modo per controllare NaN
+- **Array.from**( arrLike ) 	utile per DOM element o *arguments*
+- **Array.prototype.findIndex**( predicate: (item) => bool ) 
+
+	
+```javascript
+console.log( 
+  Object.assign({}, {n: 1, s: "ciao"}, {b: true, n: 2 }) // MIXIN!!
+, Number.isNaN( 0/0 ) 								//true
+, Array.from( document.querySelectorAll('div') ) 	//Array VERO!!!
+, [1,2,"ciao",true].findIndex(x => x=="ciao") 		//2
+); 
+```
+
+- Literal di tipo Binary 0**b**0010101 e Octal 0**o**723
+- e tante altre in: Math , Number , String , Reflect API, Tail Calls, etc...
+
+---
+
+##Proxy & Object.Observe()
+
+- Attualmente non sono implementati da nessuno e potrebbero esser soggetti a cambiamenti/ridefinizioni in futuro... ma potrebbero diventare veramente Importanti per chi deve sviluppare dei **Framework di Binding** per gestire il "dirty checking"!
+
+- Permettanno di agganciare un qualsiasi oggetto ed essere notificati di tutte le modifiche che subisce ogni prorprietà, oppure di sovrapporsi all'oggetto per intercettare (e gestire) l'accesso alle proprietà anche quelle non esistenti.
+
+```javascript
+let target = {};
+let handler = {
+    get(targetObj, propKey, receiver) {
+        console.log('get ' + propKey);
+        return 123;
+    }
+};
+let proxy = new Proxy(target, handler);
+
+> proxy.foo
+    get foo
+    123
+```
+
+</script>
+</section>
+
+		<section>
+			<section>
+				<h2>Reference Links:</h2>
+				<ul>				
+					<li><a class="roll" href="https://github.com/lukehoban/es6features">Articolo</a> riassuntivo su ES6 features + <a class="roll" href="https://leanpub.com/understandinges6/read/">EBook</a>
+					</li>
+					<li><a class="roll" href="http://www.2ality.com/2014/08/es6-today.html">Serie</a> approfondimenti su ES6 by @rauschma
+					</li>
+					<li><a class="roll" href="https://github.com/getify/You-Dont-Know-JS/tree/master/es6%20%26%20beyond">Ebook</a> "You Don't Know Javascript: ES6 & Beyond" by @getify</li>
+					<li>Dettagli su <a class="roll" href="http://www.2ality.com/2014/10/es6-promises-api.html">Promise</a>, <a class="roll" href="http://www.2ality.com/2015/02/es6-iteration.html">Iterables</a>, <a class="roll" href="http://davidwalsh.name/es6-generators">Generators</a> + <a class="roll" href="http://www.2ality.com/2015/03/es6-generators.html">in depth</a></li>
+					<li>Video sul futuro <a class="roll" href="https://youtu.be/DqMFX91ToLw">ES6/7</a>	e  <a class="roll" href="https://youtu.be/hbuLw4sauCw">Async/Await</a> by @jhusain</li>
+					<li>Tutorial su jspm e <a class="roll" href="https://youtu.be/szJjsduHBQQ">Package Manager</a></li>
+					<li>Riferimenti a tutti 
+					<a class="roll" href="https://github.com/addyosmani/es6-tools">Tools per ES6</a> by @addyosmani</li>
+				</ul>
+			</section>
+			<section data-state="jslogo">			
+				<h2 style="color: #333">"The Force is strong with this one." <small>Darth Vader</small></h2>
+				<br/><br/><br/>
+				<audio data-autoplay controls>
+					<source src="audio/imperial_march_metallica.mp3" type="audio/mpeg">
+				</audio>
+			</section>
+			<section data-state="feedback">
+			  <h1>THE END</h1>
+			  <h3>by Daniele Morosinotto</h3>
+			  <br/>
+			  <h5>Contatti:</h5>
+			  <ul>
+				<li><a href="mailto:dmorosinotto@icloud.com">dmorosinotto@icloud.com</a></li>
+				<li>twiter <a href="https://twitter.com/dmorosinotto">@dmorosinotto</a></li>
+			  <ul>	
+			  <br/>
+			  <small>Slide realizzate con <a href="http://lab.hakim.se/reveal-js">reveal.js</a><br/>
+			</section>			
+		</section>
+
+	</div><!-- end slides -->
+</div><!-- end reveal -->
+
+<script src="js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+	// Full list of configuration options available here:
+	// https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		
+		controls: true,
+		progress: true,
+		history: true,
+		center: true,
+
+		theme: "xe", // available themes are in /css/theme
+		transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+		
+		// Don't forget to add the dependencies
+		dependencies: [
+			{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+			{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+		]
+	});
+</script>
+
+<!-- FORK ME ON GITHUB -->
+<a href="https://github.com/dmorosinotto/XEJS3"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+<!-- DOWNLOAD ONLINE -->
+<footer><small>Materiale online: <a href="http://dmorosinotto.github.io/XEJS3">http://dmorosinotto.github.io/XEJS3</a></small></footer>
+</body>
+</html>

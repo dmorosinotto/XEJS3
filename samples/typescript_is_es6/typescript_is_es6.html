@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ES6 compiled with Typescript </title>
+<!--[if lt IE 9]>
+<script src="../html5shiv.js"></script>
+<script src="../consoleIE.js"></script>
+<![endif]-->
+</head>
+<body>
+Per usare Typescript è necessario prima compilare:
+<pre>
+npm install typescript -g
+tsc greet.ts --out greet.js --target ES5
+</pre>
+Una volta compilato con Typescript il codice diventa <b>puro JS</b>!
+Compatibile con <b>TUTTI I BROWSER</b> in base al <i>target</i> selezionato (ES5 o ES3)!
+<p>Nella pagina html deve essere referenziato solo il file .js generato!</p>
+<script type="text/javascript" src="greet.js"></script>
+</body>
+</html>
