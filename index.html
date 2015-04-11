@@ -50,8 +50,8 @@
 		</section>
 		<section>
 			<h2>Why JS?</h2>
-			<iframe class="fragment" data-autoplay width="853" height="480" src="https://www.youtube-nocookie.com/embed/KoBSGpm16wo?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-			<h3 class="fragment"><a href="https://medium.com/@slsoftworks/javascript-world-domination-af9ca2ee5070">&nbsp;The Javascript World Domination&nbsp;</a></h3>
+			<iframe data-autoplay width="853" height="480" src="https://www.youtube-nocookie.com/embed/KoBSGpm16wo?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+			<h3><a href="https://medium.com/@slsoftworks/javascript-world-domination-af9ca2ee5070">&nbsp;The Javascript World Domination&nbsp;</a></h3>
 		</section>		
 	</section>
 	
@@ -103,7 +103,7 @@ a.k.a.
 
 TL;DR
 
->  #Re: YES!
+>  #IMHO: YES with TS!
 
 ---
 
@@ -113,8 +113,8 @@ TL;DR
 
 - Microsoft in [**TypeScript**](http://www.typescriptlang.org/) [*(1.5 alpha == ES6)*](https://github.com/Microsoft/TypeScript/wiki/Roadmap#15)
 - Google in [**Angular2**](https://angular.io/docs/js/latest/quickstart.html) [*(AtScript === Typescript)*](https://docs.google.com/document/d/11YUzC-1d0V1-Q3V0fQ7KSit97HnZoKVygDxpWzEYW0U/edit?pli=1#heading=h.9kzwyri4iqho)
-- [**Aurelia**](http://aurelia.io/get-started.html) (ex Durandal)
 - Facebook in [**React**](https://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html) (in parte)
+- [**Aurelia**](http://aurelia.io/get-started.html) (ex Durandal)
 - VanillaJS :-)
 
 ---
@@ -205,7 +205,7 @@ Ed in fine nel file HTML bisogna includere gli script di *startup*:
 Per evitare di avere la compilazione a runtime di ES6 e rimuovere tutte le dipendenze da *SystemJS* e *Traceur* e' possibile creare un **bundle** con [**jspm**](http://jspm.io/) ed ottenere il file **build.js** da usare nell'HTML
 
 ```console
-npm  bundle-sfx  my_startup  build.js
+jspm  bundle-sfx  my_startup  build.js
 ```
 
 Con ES6 volendo possiamo anche creare delle **Class** che riutilizzano e incapsulano meglio la nostra *function greet()*
